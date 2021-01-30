@@ -1,0 +1,58 @@
+.appBar {
+  position: fixed;
+  bottom: 0;
+  top: auto !important;
+}
+
+.toolbar{
+  bottom: 0 !important;
+  top: auto !important;
+  position: fixed !important;
+  width: 100%;
+  display: flex;
+  background-color: #444;
+}
+
+.circleButton{
+  width: 60px;
+  height: 60px;
+  border-radius: 40px;
+}
+
+.divCenter{
+  align-self: center;
+  margin: auto;
+}
+
+.flexSpaceBetween{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: stretch;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .appBar {
+    bottom: auto;
+    top: 0;
+  }
+  .mobile {
+    display: none !important;
+    color: white !important;
+  }
+
+  .toolbar{
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .desktop {
+    display: none !important;
+  }
+}
