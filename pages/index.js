@@ -50,9 +50,6 @@ const Home = () => {
   const [isOpenCamera, setIsOpenCamera] = useState(false);
   const [filterType, setFilterType] = useState('');
 
-  const [trigger, updateState] = useState(true);
-  const forceUpdate = React.useCallback(() => updateState(!trigger), []);
-
   useEffect(() => {
     function updateSize() {
       if (canvasRef?.current) {
@@ -64,10 +61,14 @@ const Home = () => {
     }
     updateSize();
     window.addEventListener('resize', updateSize);
+    window.addEventListener('mousemove', updateSize);
+    window.addEventListener('scroll', updateSize);
     return () => {
       window.removeEventListener('resize', updateSize);
+      window.removeEventListener('mousemove', updateSize);
+      window.removeEventListener('scroll', updateSize);
     }
-  }, [canvasRef, trigger]);
+  }, [canvasRef, imageUrl, loading]);
 
   useEffect(() => {
     setFilterType('')
@@ -101,7 +102,6 @@ const Home = () => {
       }
     }
     setLoading(false);
-    forceUpdate();
   }
 
   const isBrowser = () => typeof window !== "undefined"
